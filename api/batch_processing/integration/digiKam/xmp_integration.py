@@ -146,7 +146,8 @@ def update_xmp_metadata(categories, options, rename_cats, n_images, image):
                     detection['conf']
                     
         img = pyexiv2.Image(r'{0}'.format(img_path))
-        img.modify_xmp({'Xmp.lr.hierarchicalSubject': image_categories})
+        tag_list = "Species/"+image_categories
+        img.modify_xmp({'Xmp.digiKam.TagsList': tag_list})
         
         # If we're doing the rename/.check behavior...
         if not (options.rename_conf is None and options.rename_cats is None):
