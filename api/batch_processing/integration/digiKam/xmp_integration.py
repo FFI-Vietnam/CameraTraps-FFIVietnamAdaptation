@@ -167,7 +167,9 @@ def update_xmp_metadata(categories, options, rename_cats, n_images, image):
                         
                 parent_folder = os.path.dirname(img_path)
                 file_name = ntpath.basename(img_path)
-                manual_file_name = file_name.split('.')[0]+'_check' + '.' + file_name.split('.')[1]
+                # check_string = '_check'
+                check_string = ''
+                manual_file_name = file_name.split('.')[0]+ check_string + '.' + file_name.split('.')[1]
                 os.rename(img_path, os.path.join(parent_folder, manual_file_name))
                 
         if options.xmp_gui is not None:
