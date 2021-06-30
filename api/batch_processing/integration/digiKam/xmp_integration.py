@@ -117,7 +117,7 @@ def update_xmp_metadata(categories, options, rename_cats, n_images, image):
         for detection in image['detections']:
             
             cat = category_mapping[categories[detection['category']]]
-            
+            cat = 'Species/' + cat
             # Have we already added this to the list of categories to
             # write out to this image?
             if cat not in image_categories:
@@ -146,9 +146,11 @@ def update_xmp_metadata(categories, options, rename_cats, n_images, image):
                     detection['conf']
                     
         img = pyexiv2.Image(r'{0}'.format(img_path))
-        tag_list = "Species/"+image_categories
-        img.modify_xmp({'Xmp.digiKam.TagsList': tag_list})
-        
+        try:
+            image_categories += img.read_xmp()['Xmp.digiKam.TagsList']
+            img.modify_xmp({'Xmp.digiKam.TagsList': image_categories})
+        except:
+            pass
         # If we're doing the rename/.check behavior...
         if not (options.rename_conf is None and options.rename_cats is None):
             
