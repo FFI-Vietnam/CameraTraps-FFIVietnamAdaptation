@@ -117,7 +117,7 @@ def update_xmp_metadata(categories, options, rename_cats, n_images, image):
         for detection in image['detections']:
             
             cat = category_mapping[categories[detection['category']]]
-            cat = 'Species/' + cat
+            cat = 'MegaDetector/' + cat
             # Have we already added this to the list of categories to
             # write out to this image?
             if cat not in image_categories:
