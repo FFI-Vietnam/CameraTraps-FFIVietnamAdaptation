@@ -106,8 +106,11 @@ def plot_precision_recall_curve(
     ax.step(recalls, precisions, color='b', alpha=0.2, where='post')
     ax.fill_between(recalls, precisions, alpha=0.2, color='b', step='post')
 
-    ax.set(x_label='Recall', y_label='Precision', title=title)
-    ax.set(x_lim=(0.0, 1.05), y_lim=(0.0, 1.05))
+    ax.set(title=title)
+    ax.set_xlabel('Recall')
+    ax.set_ylabel('Precision')
+    ax.set_xlim(0.0, 1.05)
+    ax.set_ylim(0.0, 1.05)
     return fig
 
 

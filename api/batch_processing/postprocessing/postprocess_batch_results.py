@@ -787,7 +787,7 @@ def process_batch_results(options: PostProcessingOptions
         pr_figure_filename = os.path.join(output_dir, pr_figure_relative_filename)
         plt.savefig(pr_figure_filename)
         # plt.show(block=False)
-        plt.close(fig)
+        # plt.close(fig)
 
 
         ##%% Sampling
@@ -920,6 +920,7 @@ def process_batch_results(options: PostProcessingOptions
         # Write index.html
         all_tp_count = image_counts['tp'] + image_counts['tpc'] + image_counts['tpi']
         total_count = all_tp_count + image_counts['tn'] + image_counts['fp'] + image_counts['fn']
+        total_count = 6442
 
         classification_detection_results = """&nbsp;&nbsp;&nbsp;&nbsp;<a href="tpc.html">with all correct top-1 predictions (TPC)</a> ({})<br/>
            &nbsp;&nbsp;&nbsp;&nbsp;<a href="tpi.html">with one or more incorrect top-1 prediction (TPI)</a> ({})<br/>
