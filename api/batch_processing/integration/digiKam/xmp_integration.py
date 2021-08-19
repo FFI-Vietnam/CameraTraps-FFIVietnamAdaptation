@@ -288,7 +288,7 @@ def browse_file(options,file_path_var):
 def create_gui(options):
     
     root = tkinter.Tk()
-    root.resizable(False, False)
+    root.resizable(True, True)
     root.configure(background='white')
     root.title('DigiKam Integration')
     
@@ -453,17 +453,17 @@ def main():
     args = parser.parse_args()
     args_to_object(args,options)
     
-    if options.gui:
-        assert options.input_file is None, 'Command-line argument specified in GUI mode'
-        assert options.image_folder is None, 'Command-line argument specified in GUI mode'
-        assert options.min_threshold is None, 'Command-line argument specified in GUI mode'
-        assert options.remove_path is None, 'Command-line argument specified in GUI mode'
-        assert options.rename_conf is None, 'Command-line argument specified in GUI mode'
-        assert options.rename_cat is None, 'Command-line argument specified in GUI mode'
-        assert options.num_threads == 1, 'Command-line argument specified in GUI mode'
-        create_gui(options)    
-    else:
-        process_input_data(options)
+    # if options.gui:
+    #     assert options.input_file is None, 'Command-line argument specified in GUI mode'
+    #     assert options.image_folder is None, 'Command-line argument specified in GUI mode'
+    #     assert options.min_threshold is None, 'Command-line argument specified in GUI mode'
+    #     assert options.remove_path is None, 'Command-line argument specified in GUI mode'
+    #     assert options.rename_conf is None, 'Command-line argument specified in GUI mode'
+    #     assert options.rename_cat is None, 'Command-line argument specified in GUI mode'
+    #     assert options.num_threads == 1, 'Command-line argument specified in GUI mode'
+    create_gui(options)    
+    # else:
+    #     process_input_data(options)
 
 
 if __name__ == '__main__':
