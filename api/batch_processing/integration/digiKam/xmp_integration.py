@@ -437,33 +437,9 @@ def args_to_object(args,obj):
             setattr(obj, n, v)
 
 
-def main():
-    
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--input_file', help = 'Path to the MegaDetector .json file', default=None)
-    parser.add_argument('--image_folder', help = 'Path to the folder containing images', default=None)
-    parser.add_argument('--min_threshold', help = 'Minimum detection confidence that will be treated as a detection event', default=None)
-    parser.add_argument('--remove_path', help = 'Prefix to remove from image paths in the .json file', default=None)
-    parser.add_argument('--rename_conf', help = 'Below this confidence level, images will be renamed for manual check', default=None)
-    parser.add_argument('--rename_cat', help = 'Category (or comma-delimited categories) to apply renaming behavior to', default=None)
-    parser.add_argument('--num_threads', help = 'Number of threads to use for image processing', default=1)
-    parser.add_argument('--gui', help = 'Run in GUI mode', action='store_true')
-    
+def main():    
     options = xmp_integration_options()
-    args = parser.parse_args()
-    args_to_object(args,options)
-    
-    # if options.gui:
-    #     assert options.input_file is None, 'Command-line argument specified in GUI mode'
-    #     assert options.image_folder is None, 'Command-line argument specified in GUI mode'
-    #     assert options.min_threshold is None, 'Command-line argument specified in GUI mode'
-    #     assert options.remove_path is None, 'Command-line argument specified in GUI mode'
-    #     assert options.rename_conf is None, 'Command-line argument specified in GUI mode'
-    #     assert options.rename_cat is None, 'Command-line argument specified in GUI mode'
-    #     assert options.num_threads == 1, 'Command-line argument specified in GUI mode'
     create_gui(options)    
-    # else:
-    #     process_input_data(options)
 
 
 if __name__ == '__main__':
