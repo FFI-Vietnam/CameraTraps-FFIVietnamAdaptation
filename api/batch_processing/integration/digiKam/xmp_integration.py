@@ -148,9 +148,12 @@ def update_xmp_metadata(categories, options, rename_cats, n_images, image):
         img = pyexiv2.Image(r'{0}'.format(img_path))
         try:
             image_categories += img.read_xmp()['Xmp.digiKam.TagsList']
-            img.modify_xmp({'Xmp.digiKam.TagsList': image_categories})
         except:
             pass
+        
+        img.modify_xmp({'Xmp.digiKam.TagsList': image_categories})
+
+            # pass
         # If we're doing the rename/.check behavior...
         if not (options.rename_conf is None and options.rename_cats is None):
             
