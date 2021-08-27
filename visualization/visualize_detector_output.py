@@ -133,10 +133,8 @@ def visualize_detector_output(detector_output_path: str,
                 continue
 
         # resize is for displaying them more quickly
-#         image = vis_utils.resize_image(
-#             vis_utils.open_image(image_obj), output_image_width)
-
-        image = vis_utils.open_image(image_obj)
+        image = vis_utils.resize_image(
+            vis_utils.open_image(image_obj), output_image_width)
         
         vis_utils.render_detection_bounding_boxes(
             entry['detections'], image, label_map=detector_label_map,
