@@ -142,8 +142,14 @@ def visualize_detector_output(detector_output_path: str,
 
         for char in ['/', '\\', ':']:
             image_id = image_id.replace(char, '~')
-        annotated_img_path = os.path.join(out_dir, image_id.split('~')[-3], image_id.split('~')[-2], image_id.split('~')[-1])
+        # create subfolder path for deployments
+        annotated_img_path = os.path.join(out_dir, image_id.split('~')[-3], image_id.split('~')[-2])
+        # create subfolders if not existed
+        os.makedirs(annotated_img_path, exist_ok = True)
+        # create image path
+        annotated_img_path = os.path.join(annotated_img_path, image_id.split('~')[-1])
         annotated_img_paths.append(annotated_img_path)
+        # save image
         image.save(annotated_img_path)
         num_saved += 1
 
